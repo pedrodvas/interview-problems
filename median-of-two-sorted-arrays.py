@@ -1,3 +1,7 @@
+# this could be done with two pointers but i would be trivial.
+# doing it this way makes it scalable for n arrays, although 
+# this part won't be implemented.
+
 class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
         """
