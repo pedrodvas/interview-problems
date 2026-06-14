@@ -6,30 +6,23 @@ class Solution(object):
         :rtype: bool
         """
         if not has_star(p) and len(p) != len(s):
-            print("unmatchable size difference detected")
             return False
         curr_pattern = 0
         curr_string = 0
-        while curr_pattern < len(p) and curr_string < len(s):
+        while curr_pattern < len(p) or curr_string < len(s):
             print("matching "+s[curr_string:]+"-"+p[curr_pattern:])
             if curr_pattern+1 < len(p) and p[curr_pattern+1] == '*':
-                minimum_times = count_minimum_times(p[curr_pattern:])
-                times = 0
                 while curr_string< len(s) and matches(s[curr_string], p[curr_pattern]):
+                    if self.isMatch(s[curr_string:], p[curr_pattern+2:]) == True:
+                        return True
                     curr_string += 1
-                    times += 1
-                if times < minimum_times:
-                    return False
-                else:
-                    curr_pattern += minimum_times+2
-                    
+                curr_pattern += 2   
             elif matches(s[curr_string], p[curr_pattern]):
                 print("absorbed " + s[curr_string])
                 curr_pattern += 1
                 curr_string += 1
             else:
                 return False
-        print("curr string is "+str(curr_string))
         if curr_string != len(s) or curr_pattern != len(p):
             return False
 
@@ -67,3 +60,6 @@ if __name__ == "__main__":
     print(sol.isMatch("ab", ".*c"))
     print(sol.isMatch("aaa", "ab*a*c*a"))
     print(sol.isMatch("aa", "a*c*a"))
+    print(sol.isMatch("ssissippi", "s*is*p*."))
+    print(sol.isMatch("ab", ".*"))
+    print(sol.isMatch("a", "ab*"))
