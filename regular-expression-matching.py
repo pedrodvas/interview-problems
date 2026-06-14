@@ -9,15 +9,20 @@ class Solution(object):
             return False
         curr_pattern = 0
         curr_string = 0
-        while curr_pattern < len(p) or curr_string < len(s):
+        while curr_pattern < len(p):
             print("matching "+s[curr_string:]+"-"+p[curr_pattern:])
             if curr_pattern+1 < len(p) and p[curr_pattern+1] == '*':
+                while curr_pattern+3 < len(p) and p[curr_pattern+3] == '*':
+                    if p[curr_pattern] == p[curr_pattern+2]:
+                        curr_pattern += 2
+                    else:
+                        break
                 while curr_string< len(s) and matches(s[curr_string], p[curr_pattern]):
                     if self.isMatch(s[curr_string:], p[curr_pattern+2:]) == True:
                         return True
                     curr_string += 1
                 curr_pattern += 2   
-            elif matches(s[curr_string], p[curr_pattern]):
+            elif curr_string != len(s) and matches(s[curr_string], p[curr_pattern]):
                 print("absorbed " + s[curr_string])
                 curr_pattern += 1
                 curr_string += 1
@@ -53,13 +58,4 @@ def count_minimum_times(p):
 
 if __name__ == "__main__":
     sol = Solution()
-    print(sol.isMatch("mississippi", "mis*is*p*."))
-    print(sol.isMatch("aa", "a*"))
-    print(sol.isMatch("ab", ".*"))
-    print(sol.isMatch("aaa", "a*a"))
-    print(sol.isMatch("ab", ".*c"))
-    print(sol.isMatch("aaa", "ab*a*c*a"))
-    print(sol.isMatch("aa", "a*c*a"))
-    print(sol.isMatch("ssissippi", "s*is*p*."))
-    print(sol.isMatch("ab", ".*"))
-    print(sol.isMatch("a", "ab*"))
+    print(sol.isMatch("aaaaaaaaaaaaaaaaaaab", "a*a*a*a*a*a*a*a*a*a*"))
