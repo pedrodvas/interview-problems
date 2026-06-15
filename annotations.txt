@@ -1,3 +1,11 @@
 Always start buy defining the outer functions,
 afterwards define the lower level ones, along with
 what is returned, alongside the return types
+
+ord = ascii for number
+
+import heapq for heaps
+
+etc.sort() for simple lists
+etc.sort(lambda x: EXPRESSION, Reverse=bool)
+for sorting
