@@ -1,0 +1,15 @@
+1347: Minimum Number of Steps to Make Two Strings Anagrams ok
+1383: Maximum Performance of a Team (ou variantes) ok
+981: Time Based Key-Value Store
+207: Course Schedule
+146: LRU Cache
+200: Number of Islands
+56: Merge Intervals
+1011: Capacity To Ship Packages Within D Days
+1244: Design A Leaderboard
+394: Decode String
+1235: Maximum Profit in Job Scheduling
+743: Network Delay Time
+23: Merge k Sorted Lists
+42: Trapping Rain Water
+1166: Design File System
