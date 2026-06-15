@@ -9,3 +9,17 @@ import heapq for heaps
 etc.sort() for simple lists
 etc.sort(lambda x: EXPRESSION, Reverse=bool)
 for sorting
+
+if you are going to work with ordered lists, use
+import bisect
+bisect.insort(list, element)
+if element is tuple or list, first part is used to order
+and then you can use 
+bisect.bisect_left(list, target)
+↓→ will put at the first opportunity
+bisect.bisect_right(list, target)
+↓→ will put at the last opportunity
+
+tuples can be defined as
+t = (a, b, c)
+and accessed as t[0], t[1], ...
