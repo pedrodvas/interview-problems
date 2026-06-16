@@ -23,3 +23,16 @@ bisect.bisect_right(list, target)
 tuples can be defined as
 t = (a, b, c)
 and accessed as t[0], t[1], ...
+
+if you are dealing with a graph problem, the
+default way to create an adjency list is using
+from collections import defaultdict
+graph = defaultdict(list)
+#list argument makes an origin node be created
+#automatically when executing the line below
+#the argument defines the behaviour of the 
+#default dict, being a set, list or int
+#after accesing the first key
+graph[origin].append(destiny) #storing a new edge
+print(graph[origin]) #acessing the 
+print
