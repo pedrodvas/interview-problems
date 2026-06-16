@@ -1,7 +1,7 @@
 1347: Minimum Number of Steps to Make Two Strings Anagrams ok
 1383: Maximum Performance of a Team (ou variantes) ok
-981: Time Based Key-Value Store
-207: Course Schedule
+981: Time Based Key-Value Store ok
+207: Course Schedule ok
 146: LRU Cache
 200: Number of Islands
 56: Merge Intervals
