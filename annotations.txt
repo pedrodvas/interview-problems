@@ -40,3 +40,17 @@ print
 lists in python are not linked lists, like you
 used to think, but instead are actually arrays in
 their implementation.
+
+when summing the values of a list, use
+sum(list)
+It uses a built in python function which runs
+as C
+
+lambda in python is a one liner, one use function
+for example:
+x = lambda a: a+120*a*a
+or can also be
+y = lambda a,b,c: a+c*b+c
+they then can be invoked as
+x(2)
+y(2,3,4)
