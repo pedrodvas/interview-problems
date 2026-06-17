@@ -36,3 +36,7 @@ graph = defaultdict(list)
 graph[origin].append(destiny) #storing a new edge
 print(graph[origin]) #acessing the 
 print
+
+lists in python are not linked lists, like you
+used to think, but instead are actually arrays in
+their implementation.
