@@ -2,7 +2,7 @@
 1383: Maximum Performance of a Team (ou variantes) ok
 981: Time Based Key-Value Store ok
 207: Course Schedule ok
-146: LRU Cache
+146: LRU Cache ok
 200: Number of Islands
 56: Merge Intervals
 1011: Capacity To Ship Packages Within D Days
