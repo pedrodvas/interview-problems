@@ -54,3 +54,11 @@ y = lambda a,b,c: a+c*b+c
 they then can be invoked as
 x(2)
 y(2,3,4)
+
+remember to think about edge cases in order to
+clarify the problem you want to solve
+
+zip can merge n lists creating a list of n-uples.
+It only creates the items when necessary, and discards
+the items when they are used. because of that, also using
+list() is essencial in a lot of times;
