@@ -6,7 +6,7 @@
 200: Number of Islands probably ok
 56: Merge Intervals ok
 1011: Capacity To Ship Packages Within D Days ok
-1244: Design A Leaderboard
+1244: Design A Leaderboard locked
 394: Decode String
 1235: Maximum Profit in Job Scheduling
 743: Network Delay Time
