@@ -9,7 +9,7 @@
 1244: Design A Leaderboard locked
 394: Decode String ok
 1235: Maximum Profit in Job Scheduling ok
-743: Network Delay Time
+743: Network Delay Time ok
 23: Merge k Sorted Lists
 42: Trapping Rain Water
 1166: Design File System
