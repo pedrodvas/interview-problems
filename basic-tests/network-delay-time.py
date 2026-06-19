@@ -23,24 +23,30 @@ class Solution:
         for i in range(len(graph_dict[k])):
             heapq.heappush(closest_heap, graph_dict[k][i])
         
-        #the heap should store the accumullated time, and not edhe
+        #the heap should store the accumullated time, and not edge only
+        #with the above change, we can also implement another optimization
+        visited = (n+1)*[False]
         while closest_heap:
             curr_edge = heapq.heappop(closest_heap)
             time = curr_edge[0]
             origin = curr_edge[1]
             destiny = curr_edge[2]
-            if min_times[destiny] == None or min_times[destiny] > time + min_times[origin]:
-                min_times[destiny] = time + min_times[origin]
+            if visited[destiny] == True:
+                continue
+            visited[destiny] = True
+            if min_times[destiny] == None or min_times[destiny] > time:
+                min_times[destiny] = time
             
                 #forgot to add new nodes
                 for i in range(len(graph_dict[destiny])):
                     to_add_time, to_add_origin, to_add_destiny = graph_dict[destiny][i]
+                    to_add_time += time #sum with time to reach origin
                     heapq.heappush(closest_heap, (to_add_time, to_add_origin, to_add_destiny))
         
-        min_times.pop(0)
-        if None in min_times:
+        
+        if None in min_times[1:]:
             return -1
-        return max(min_times)
+        return max(min_times[1:])
             
 if __name__ == "__main__":
     sol = Solution()
