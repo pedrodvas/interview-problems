@@ -13,3 +13,9 @@
 23: Merge k Sorted Lists
 42: Trapping Rain Water
 1166: Design File System
+1359: Count All Valid Pickup and Delivery Options
+1229: Meeting Scheduler
+787: Cheapest Flights Within K Stops
+239: Sliding Window Maximum
+72: Edit Distance
+210: Course Schedule II
