@@ -31,15 +31,11 @@ class Solution:
         end_2 = len(nums2)-1
         mid_2 = (start_2 + end_2)//2
         while (end_1-start_1)>1 and (end_2-start_2)>1:
-            print("========================")
             mid_1 = (start_1 + end_1)//2
             mid_2 = (start_2 + end_2)//2
-            print(f"nums1 list - start {start_1} - end {end_1}:\n{nums1[start_1:end_1+1]}")
-            print(f"nums2 list - start {start_2} - end {end_2}:\n{nums2[start_2:end_2+1]}")
             delta_1 = mid_1 - start_1
             delta_2 = mid_2 - start_2
             delta = delta_1 if delta_1 < delta_2 else delta_2
-            print(f"delta 1: {delta_1} - delta 2: {delta_2} --> delta: {delta}")
             if nums1[mid_1] < nums2[mid_2]:
                 # we can discard the numbers to the left of mid_1
                 # and to the right of mid_2
@@ -58,10 +54,9 @@ class Solution:
                 end_1 -= delta
                 start_2 += delta
                 end_2 -= delta
-        
-        print("loop ended")
-        print(f"nums1 list - start {start_1} - end {end_1}:\n{nums1[start_1:end_1+1]}")
-        print(f"nums2 list - start {start_2} - end {end_2}:\n{nums2[start_2:end_2+1]}")
+         
+        nums1 = nums1[start_1:end_1+1]
+        nums2 = nums2[start_2:end_2+1]
         # the rest of the problem will be dealt with after this loop
         # you can maybe create a function and use it with bisect maybe
         # I just need to look for the insertion index of each element
@@ -70,22 +65,37 @@ class Solution:
         # so global_median = (len(bigger_list) - amount_smaller_than_local_median)//2
         # with this value, can I try to extract an element from a list using key=lambda x: etc?
 
-def get_elem_from_merged_list_with_2_bonus(nums: list[int], elem1: int, elem2: int, index: int):
-    i1 = bisect.bisect_left(nums, elem1)
-    i2 = bisect.bisect_left(nums, elem2)
+        smaller = nums1 if len(nums1) < len(nums2) else nums2
+        bigger = nums1 if len(nums1)>= len(nums2) else nums2
+        total_length = len(bigger)+len(smaller)
+        median_index = total_length//2
 
-    if index > i2:
-        # remove 1 and access the rest
+        if total_length % 2 == 0:
+            median1 = get_elem_from_merged_bonus(bigger, smaller, median_index)
+            median2 = get_elem_from_merged_bonus(bigger, smaller, median_index-1)
+            return (median1+median2)/2
+        median = get_elem_from_merged_bonus(bigger, smaller, median_index)
+        return median
 
+def get_elem_from_merged_bonus(nums: list[int], bonus: list[int], index: int):
+
+    indexes_list = [bisect.bisect_left(nums, i) for i in bonus]
     # space transformation
-    if index < i1:
-        # doesn't need to transform
-    if index > i1:
-        # remove 1 and acess list
-    else:
-        #return elem1
+    for i in range(len(indexes_list)):
+        if index <= indexes_list[i]:
+            #doesn't need to be dislocated
+            if index == indexes_list[i]:
+                print("here")
+                return bonus[i]
+            return nums[index]
+        index -= 1
+    
+    return nums[index]
+    
     
 if __name__ == "__main__":
     sol = Solution()
     a = sol.findMedianSortedArrays(nums1 = [1,3,5,7,89], nums2 = [2,3,4,5])
+    print(a)
+    a = sol.findMedianSortedArrays([1,2],[3,4])
     print(a)
