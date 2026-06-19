@@ -5,6 +5,8 @@ what is returned, alongside the return types
 ord = ascii for number
 
 import heapq for heaps
+you apply its operation on a list, then you have
+the needed heap
 
 etc.sort() for simple lists
 etc.sort(lambda x: EXPRESSION, Reverse=bool)
@@ -62,3 +64,8 @@ zip can merge n lists creating a list of n-uples.
 It only creates the items when necessary, and discards
 the items when they are used. because of that, also using
 list() is essencial in a lot of times;
+
+dijkstra is implemented by having a heap with
+the total time to reach each destiny. When a destiny is popped
+from the heap, it is the closest path to reach it. Storing 
+the visited nodes through the heap can also help with optimization
