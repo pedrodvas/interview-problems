@@ -14,7 +14,7 @@
 42: Trapping Rain Water ok
 1166: Design File System LOCKED
 1359: Count All Valid Pickup and Delivery Options ok
-1229: Meeting Scheduler
+1229: Meeting Scheduler LOCKED
 787: Cheapest Flights Within K Stops
 239: Sliding Window Maximum
 72: Edit Distance
