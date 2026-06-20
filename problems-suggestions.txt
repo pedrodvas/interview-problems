@@ -11,7 +11,7 @@
 1235: Maximum Profit in Job Scheduling ok
 743: Network Delay Time ok
 23: Merge k Sorted Lists HALF ok
-42: Trapping Rain Water
+42: Trapping Rain Water ok
 1166: Design File System
 1359: Count All Valid Pickup and Delivery Options
 1229: Meeting Scheduler
