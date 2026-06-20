@@ -12,7 +12,7 @@
 743: Network Delay Time ok
 23: Merge k Sorted Lists HALF ok
 42: Trapping Rain Water ok
-1166: Design File System
+1166: Design File System LOCKED
 1359: Count All Valid Pickup and Delivery Options
 1229: Meeting Scheduler
 787: Cheapest Flights Within K Stops
