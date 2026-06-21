@@ -69,3 +69,6 @@ dijkstra is implemented by having a heap with
 the total time to reach each destiny. When a destiny is popped
 from the heap, it is the closest path to reach it. Storing 
 the visited nodes through the heap can also help with optimization
+
+if you want to create matrices, using multiplication of [None]
+is not enough, you need to use a for.
