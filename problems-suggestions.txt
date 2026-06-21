@@ -15,7 +15,7 @@
 1166: Design File System LOCKED
 1359: Count All Valid Pickup and Delivery Options ok
 1229: Meeting Scheduler LOCKED
-787: Cheapest Flights Within K Stops
+787: Cheapest Flights Within K Stops ok
 239: Sliding Window Maximum ok 
 72: Edit Distance
 210: Course Schedule II
