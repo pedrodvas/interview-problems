@@ -1,0 +1,22 @@
+Given an unsorted array of integers nums,
+return the length of the longest consecutive elements sequence.
+
+You must write an algorithm that runs in O(n) time.
+
+To solve this algorithm, we first create an outside
+variable that will store the biggest consec sequence yet.
+
+Then we iterate through the list. For each consecutive
+element that element[i] = element[i-1]+1 we add +1 to the 
+local sequence variable and check if this variable is gte 
+to the biggest sequence. If it is, we update it.
+
+You didn't understand the algorithm correcly.
+In this case, we build a dict, where numbers that
+have shown up will be stored along with a pointer 
+to the size of the sequence. If a number is alone 
+on the dict, meaning there is neither number-1 or number+1 
+we save 1 on the pointer. If it shows up next to someone, we
+point them to the same place and add one. If it shows in the middle
+of two sequences, we then make seq_left, number, seq_right point 
+to the same place, saving len(seq_left)+number+len(seq_left) there
