@@ -44,7 +44,75 @@ class WindowMergeService:
     # 3) Sort by start_min
     # 4) Single pass merge using the touching-merge rule
     # 5) Return consolidated list
-        return result
+        windows = self.kitchen_api.get_pickup_windows_for_restaurant(restaurant_id)
+        print(f"windows are {windows.windows}")
+        for i in range(len(windows.windows)):
+            print(f"windows: {windows.windows[i].start_min} to {windows.windows[i].end_min}")
+        
+        #data acquired successfully, now we have to actually process it
+        windows_list = _merge_windows(windows.windows)
+        print(f"==========================")
+        print(f"ordered windows:")
+        for i in range(len(windows_list)):
+            print(f"windows: {windows_list[i].start_min} to {windows_list[i].end_min}")
+        
+        print("==============================")
+        merged_windows = []
+        #now we have to merge the actual windows
+        i = 0
+        while i<len(windows_list):
+            if windows_list[i].start_min >= windows_list[i].end_min:
+                i += 1
+                continue
+            curr = i + 1
+            new_window = PickupWindow(windows_list[i].start_min, windows_list[curr-1].end_min)
+            while curr < len(windows_list) and new_window.end_min >= windows_list[curr].start_min:
+                print(f"window 1: {windows_list[i].start_min} to {windows_list[i].end_min}")
+                print(f"window 2: {windows_list[curr].start_min} to {windows_list[curr].end_min}")
+                new_window = PickupWindow(windows_list[i].start_min, windows_list[curr].end_min)
+                curr += 1
+            
+            merged_windows.append(new_window)
+            i = curr
+        
+        formatted_windows = []
+        for i in range(len(merged_windows)):
+            formatted_windows.append({})
+            formatted_windows[-1]["start_min"] = merged_windows[i].start_min
+            formatted_windows[-1]["end_min"] = merged_windows[i].end_min
+            print(f"windows merged: {merged_windows[i].start_min} to {merged_windows[i].end_min}")
+        
+        #formatting
+
+        return formatted_windows
+
+def _merge_windows(windows: List[PickupWindow]):
+    if len(windows) == 1:
+        return windows
+    middle = len(windows)//2
+    
+    left_part = _merge_windows(windows[middle:])
+    right_part = _merge_windows(windows[:middle])
+
+    return_list = []
+    left_iterator = 0
+    right_iterator = 0
+
+    while left_iterator + right_iterator < len(left_part) + len(right_part):
+        if right_iterator==len(right_part):
+            return_list.append(left_part[left_iterator])
+            left_iterator += 1
+        elif left_iterator == len(left_part):
+            return_list.append(right_part[right_iterator])
+            right_iterator += 1        
+        elif left_part[left_iterator].start_min < right_part[right_iterator].start_min:
+            return_list.append(left_part[left_iterator])
+            left_iterator += 1
+        else:
+            return_list.append(right_part[right_iterator])
+            right_iterator += 1
+    
+    return return_list
 
 #Python
 # --- Test Harness ---
