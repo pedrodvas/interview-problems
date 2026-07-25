@@ -3,3 +3,12 @@ Max Consecutive Ones III
 Given a binary array nums and an integer k, 
 return the maximum number of consecutive 1's 
 in the array if you can flip at most k 0's.
+
+we need to think about things like
+[000]
+or [1110110100]
+
+My solution is walinkg with two pointers, with the first one going
+the farthest away it can while using all three zeros. When it reaches a new
+zero, the left pointer will walk until it finds a zero to compensate the one 
+used at the front. The max size of right-left will be stored
