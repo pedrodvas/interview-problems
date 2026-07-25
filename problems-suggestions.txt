@@ -1,21 +1,21 @@
-1347: Minimum Number of Steps to Make Two Strings Anagrams ok
-1383: Maximum Performance of a Team (ou variantes) ok
-981: Time Based Key-Value Store ok
-207: Course Schedule ok
-146: LRU Cache ok
-200: Number of Islands probably ok
-56: Merge Intervals ok
-1011: Capacity To Ship Packages Within D Days ok
-1244: Design A Leaderboard LOCKED
-394: Decode String ok
-1235: Maximum Profit in Job Scheduling ok
-743: Network Delay Time ok
 23: Merge k Sorted Lists HALF ok
 42: Trapping Rain Water ok
-1166: Design File System LOCKED
-1359: Count All Valid Pickup and Delivery Options ok
-1229: Meeting Scheduler LOCKED
-787: Cheapest Flights Within K Stops ok
-239: Sliding Window Maximum ok 
+56: Merge Intervals ok
 72: Edit Distance ok
+146: LRU Cache ok
+200: Number of Islands probably ok
+207: Course Schedule ok
 210: Course Schedule II ok
+239: Sliding Window Maximum ok 
+394: Decode String ok
+743: Network Delay Time ok
+787: Cheapest Flights Within K Stops ok
+981: Time Based Key-Value Store ok
+1011: Capacity To Ship Packages Within D Days ok
+1166: Design File System LOCKED
+1229: Meeting Scheduler LOCKED
+1235: Maximum Profit in Job Scheduling ok
+1244: Design A Leaderboard LOCKED
+1347: Minimum Number of Steps to Make Two Strings Anagrams ok
+1359: Count All Valid Pickup and Delivery Options ok
+1383: Maximum Performance of a Team (ou variantes) ok
