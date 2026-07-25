@@ -1,0 +1,3 @@
+Solve leetcode WHILE SPEAKING. Try to solve the problems in less than 30min
+with as little assistance as possible
+
