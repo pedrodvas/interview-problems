@@ -6,7 +6,8 @@
 200: Number of Islands probably ok
 207: Course Schedule ok
 210: Course Schedule II ok
-239: Sliding Window Maximum ok 
+239: Sliding Window Maximum ok
+295: Find Median from Data Stream ok
 394: Decode String ok
 743: Network Delay Time ok
 787: Cheapest Flights Within K Stops ok
