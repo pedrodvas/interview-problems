@@ -19,3 +19,4 @@
 1347: Minimum Number of Steps to Make Two Strings Anagrams ok
 1359: Count All Valid Pickup and Delivery Options ok
 1383: Maximum Performance of a Team (ou variantes) ok
+1396: Design Underground System ok
