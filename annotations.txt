@@ -39,6 +39,9 @@ graph[origin].append(destiny) #storing a new edge
 print(graph[origin]) #acessing the 
 print
 
+remember to use the deque for a more optimized list
+for some cases, instead of the list[] in python
+
 lists in python are not linked lists, like you
 used to think, but instead are actually arrays in
 their implementation.
