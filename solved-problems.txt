@@ -1,23 +1,30 @@
-23: Merge k Sorted Lists HALF ok
-42: Trapping Rain Water ok
-56: Merge Intervals ok
-72: Edit Distance ok
-146: LRU Cache ok
-200: Number of Islands probably ok
-207: Course Schedule ok
-210: Course Schedule II ok
-239: Sliding Window Maximum ok
-295: Find Median from Data Stream ok
-394: Decode String ok
-743: Network Delay Time ok
-787: Cheapest Flights Within K Stops ok
-981: Time Based Key-Value Store ok
-1011: Capacity To Ship Packages Within D Days ok
+1: Two Sum
+2: Add Two Numbers
+3: Longest Substring Without Repeating Characters
+4: Median of Two Sorted Arrays
+5: Longest Palindromic Substring
+6: Zigzag Conversion
+10: Regular Expression Matching
+23: Merge k Sorted Lists HALF
+42: Trapping Rain Water
+56: Merge Intervals
+72: Edit Distance
+146: LRU Cache
+200: Number of Islands PSEUDO
+207: Course Schedule
+210: Course Schedule II
+239: Sliding Window Maximum
+295: Find Median from Data Stream
+394: Decode String
+743: Network Delay Time
+787: Cheapest Flights Within K Stops
+981: Time Based Key-Value Store
+1011: Capacity To Ship Packages Within D Days OOM 87/90
 1166: Design File System LOCKED
 1229: Meeting Scheduler LOCKED
-1235: Maximum Profit in Job Scheduling ok
+1235: Maximum Profit in Job Scheduling
 1244: Design A Leaderboard LOCKED
-1347: Minimum Number of Steps to Make Two Strings Anagrams ok
-1359: Count All Valid Pickup and Delivery Options ok
-1383: Maximum Performance of a Team (ou variantes) ok
-1396: Design Underground System ok
+1347: Minimum Number of Steps to Make Two Strings Anagrams
+1359: Count All Valid Pickup and Delivery Options
+1383: Maximum Performance of a Team (ou variantes)
+1396: Design Underground System
