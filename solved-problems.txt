@@ -8,6 +8,7 @@
 23: Merge k Sorted Lists HALF
 42: Trapping Rain Water
 56: Merge Intervals
+67: Add Binary
 72: Edit Distance
 146: LRU Cache
 200: Number of Islands PSEUDO
