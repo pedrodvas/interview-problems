@@ -39,6 +39,7 @@ class Solution:
         #when walking with pleft, we do the opposite of the pright
         #both borders are inclusive*
         pleft, pright = 0, 0
+        minimum = (-1, len(s)-1)
         total_letters_missing = put_hash(s[pright], total_letters_missing, amount_letters_hash)
         print(f"letter hash is {amount_letters_hash}")
         print(f"total letters missing is {total_letters_missing}")
@@ -48,10 +49,16 @@ class Solution:
                 if s[pright] in amount_letters_hash:
                     total_letters_missing = put_hash(s[pright], total_letters_missing, amount_letters_hash)
             else:
+                current_complete_substring = pright - pleft
+                old_substring = minimum[1] - minimum[0]
+                if current_complete_substring < old_substring:
+                    minimum = (pleft, pright)
+
                 pleft += 1
                 if s[pleft] in amount_letters_hash:
                     total_letters_missing = remove_hash(s[pleft], total_letters_missing, amount_letters_hash)
 
+        print(f"current minimum indexes are {minimum}")
 def put_hash(letter, total_letters, letters_hash):
     letters_hash[letter] -= 1
     if letters_hash[letter] >= 0:
