@@ -30,39 +30,34 @@ class Solution:
                 amount_letters_hash[t[i]] += 1
             else:
                 amount_letters_hash[t[i]] = 1
-        print(f"letter hash is {amount_letters_hash}")
-        print(f"total letters is {total_letters_missing}")
-
+        
         #while walking with pright, if we find a letter that is
         #in t, we decrease the counter in the hash by one
         #while this value is above 0 (so we don't count duplicates)
         #when walking with pleft, we do the opposite of the pright
         #both borders are inclusive*
         pleft, pright = 0, 0
-        minimum = (-1, len(s)-1)
-        total_letters_missing = put_hash(s[pright], total_letters_missing, amount_letters_hash)
-        print(f"letter hash is {amount_letters_hash}")
-        print(f"total letters missing is {total_letters_missing}")
-        while pright < len(s):
-            print(f"=======new iteration==========")
-            print(f"current substring is {s[pleft:pright+1]}")
-            print(f"amount of letters missing from t is {total_letters_missing}")
+        minimum = (0, len(s)+1)
+        while not (pright == len(s) and total_letters_missing != 0):
             if total_letters_missing > 0:
-                pright += 1
                 if s[pright] in amount_letters_hash:
                     total_letters_missing = put_hash(s[pright], total_letters_missing, amount_letters_hash)
+                pright += 1
             else:
                 current_complete_substring = pright - pleft
                 old_substring_size = minimum[1] - minimum[0]
                 if current_complete_substring < old_substring_size:
                     minimum = (pleft, pright)
 
-                print(f"checking presence of {s[pleft]}")
                 if s[pleft] in amount_letters_hash:
                     total_letters_missing = remove_hash(s[pleft], total_letters_missing, amount_letters_hash)
                 pleft += 1
 
-        print(f"current minimum indexes are {minimum}")
+        if minimum[1] == len(s)+1:
+            return ""
+        return s[minimum[0]:minimum[1]]
+
+
 def put_hash(letter, total_letters, letters_hash):
     letters_hash[letter] -= 1
     if letters_hash[letter] >= 0:
