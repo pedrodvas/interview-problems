@@ -1,4 +1,3 @@
-76: Minimum Window Substring
 460: LFU Cache
 381: Insert Delete GetRandom O(1) - Duplicates allowed
 212: Word Search II
