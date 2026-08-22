@@ -43,20 +43,24 @@ class Solution:
         total_letters_missing = put_hash(s[pright], total_letters_missing, amount_letters_hash)
         print(f"letter hash is {amount_letters_hash}")
         print(f"total letters missing is {total_letters_missing}")
-        while pright < len(s)-1:
+        while pright < len(s):
+            print(f"=======new iteration==========")
+            print(f"current substring is {s[pleft:pright+1]}")
+            print(f"amount of letters missing from t is {total_letters_missing}")
             if total_letters_missing > 0:
                 pright += 1
                 if s[pright] in amount_letters_hash:
                     total_letters_missing = put_hash(s[pright], total_letters_missing, amount_letters_hash)
             else:
                 current_complete_substring = pright - pleft
-                old_substring = minimum[1] - minimum[0]
-                if current_complete_substring < old_substring:
+                old_substring_size = minimum[1] - minimum[0]
+                if current_complete_substring < old_substring_size:
                     minimum = (pleft, pright)
 
-                pleft += 1
+                print(f"checking presence of {s[pleft]}")
                 if s[pleft] in amount_letters_hash:
                     total_letters_missing = remove_hash(s[pleft], total_letters_missing, amount_letters_hash)
+                pleft += 1
 
         print(f"current minimum indexes are {minimum}")
 def put_hash(letter, total_letters, letters_hash):
@@ -73,4 +77,6 @@ def remove_hash(letter, total_letters, letters_hash):
 
 if __name__ == "__main__":
     sol = Solution()
+    a = "01234"
+    print(f"a cut is {a[0:2]}")
     sol.minWindow(s = "ADOBECODEBANC", t = "ABC")
