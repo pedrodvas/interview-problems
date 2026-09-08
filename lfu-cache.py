@@ -19,11 +19,21 @@ class LFUCache:
     because of the extra movements when heapifying.
 
     You thought using a hash for frequencies wouldn't work, but
-    that is wah AI is recommending. Inside each frequency, we
+    that is what AI is recommending. Inside each frequency, we
     store a linked list by recency. This way we know which key
     to delete when a critical put is used.
     '''
     def __init__(self, capacity: int):
+        self.per_item_count_dict = {}
+        # ↑ each item (1,2,3,4...) will point to a linked list
+        #which stores the keys used that many times.
+        self.smallest_frequency = None
+        self.capacity = capacity
+        self.active_keys = {}
+        #↑ allows O(1) access to values, instead of searching through
+        # the frequency counter dict. Also has to point to 
+        #its space in per_item_count_dict, to allow for updating
+        #when using put.
         
 
     def get(self, key: int) -> int:
