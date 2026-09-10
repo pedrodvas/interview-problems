@@ -1,3 +1,5 @@
+from collections import deque
+
 class LFUCache:
     '''
     to solve this problem we will
@@ -37,13 +39,23 @@ class LFUCache:
         
 
     def get(self, key: int) -> int:
+        if key in self.active_keys:
+            value = self.active_keys[key][0]
+
         
 
     def put(self, key: int, value: int) -> None:
-        
+        if key in self.active_keys:
+            self.active_keys[key][0] = value
+            ref_counter_dict = self.active_keys[key][1]
 
 
 # Your LFUCache object will be instantiated and called as such:
 # obj = LFUCache(capacity)
 # param_1 = obj.get(key)
 # obj.put(key,value)
+list = deque()
+a = "a"
+b = "b"
+list.append(b)
+list.remove(b)
