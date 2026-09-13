@@ -1,5 +1,42 @@
 from collections import deque
 
+class LinkedNode:
+    def __init__(self, val):
+        self.prev = None
+        self.val = val
+        self.next = None
+
+    def pop_head(self):
+        old = self
+        curr = self.next
+        curr.prev = None
+        return old.val, curr
+
+    def remove(self):
+        previous = self.prev
+        print(f"previous value: {previous}")
+        next = self.next
+        print(f"next value: {next}")
+
+
+        if next:
+            next.prev = previous
+        if previous:
+            previous.next = next
+
+    def add_new_tail(self, new_val):
+        self.next = LinkedNode(new_val)
+        self.next.prev = self
+        return self.next
+
+    def print_to_tail(self):
+        curr = self
+        while curr != None:
+            print(f"↓ val: {curr.val}")
+            print(f"↓")
+            curr = curr.next
+        print("Tail!")
+
 class LFUCache:
     '''
     to solve this problem we will
@@ -54,8 +91,30 @@ class LFUCache:
 # obj = LFUCache(capacity)
 # param_1 = obj.get(key)
 # obj.put(key,value)
-list = deque()
-a = "a"
-b = "b"
-list.append(b)
-list.remove(b)
+
+if __name__ == "__main__":
+    ""
+    print(f"testing linked list implementation")
+    head = tail = LinkedNode(1)
+    head.print_to_tail()
+    tail = tail.add_new_tail(2)
+    head.print_to_tail()
+    tail = tail.add_new_tail(3)
+    head.print_to_tail()
+
+    tail = tail.add_new_tail(4)
+    tail = tail.add_new_tail(5)
+    sixth = tail = tail.add_new_tail(6)
+    tail = tail.add_new_tail(7)
+    head.print_to_tail()
+    popped, head = head.pop_head()
+    print(f"popped value is {popped}")
+    popped, head = head.pop_head()
+    print(f"popped value is {popped}")
+    popped, head = head.pop_head()
+    print(f"popped value is {popped}")
+
+    sixth.remove()
+    print(f"removed six from linked list")
+    print(f"new lnked list is:")
+    head.print_to_tail()
