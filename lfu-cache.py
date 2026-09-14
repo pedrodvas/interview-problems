@@ -24,9 +24,14 @@ class LinkedNode:
         if previous:
             previous.next = next
 
-    def add_new_tail(self, new_val):
+    def add_new_tail_value(self, new_val):
         self.next = LinkedNode(new_val)
         self.next.prev = self
+        return self.next
+
+    def add_new_tail_node(self, new_node):
+        self.next = new_node
+        new_node.prev = self
         return self.next
 
     def print_to_tail(self):
@@ -66,6 +71,7 @@ class LFUCache:
         self.per_item_count_dict = {}
         # ↑ each item (1,2,3,4...) will point to a linked list
         #which stores the keys used that many times.
+        #it will be (head, tail)
         self.smallest_frequency = None
         self.capacity = capacity
         self.active_keys = {}
@@ -73,11 +79,15 @@ class LFUCache:
         # the frequency counter dict. Also has to point to 
         #its space in per_item_count_dict, to allow for updating
         #when using put.
+        #also has counter for time in its tuple
         
 
     def get(self, key: int) -> int:
         if key in self.active_keys:
             value = self.active_keys[key][0]
+            ref_counter_dict = self.active_keys[key][1]
+            times_used = self.active_keys[key][2]+1
+            
 
         
 
@@ -85,6 +95,23 @@ class LFUCache:
         if key in self.active_keys:
             self.active_keys[key][0] = value
             ref_counter_dict = self.active_keys[key][1]
+            times_used = self.active_keys[key][2]
+            self.active_keys[key][1] = self.move_up(ref_counter_dict, times_used) #check if needed
+
+        if key not in self.active_keys:
+            #remove least used and add this new key
+            self.per_item_count_dict[self.smallest_frequency].pop_head()
+            self.active_keys[key] = (value, None, 1)
+
+    def move_up(self, ref_counter_dict, times_used):
+        #use to move a key upwards in frequency
+        frequency_to_remove = self.per_item_count_dict[times_used]
+        frequency_to_add = self.per_item_count_dict[times_used+1]
+
+        #remove item
+        ref_counter_dict.remove()
+        frequency_to_add[1].add_new_tail_node(ref_counter_dict)
+        return ref_counter_dict
 
 
 # Your LFUCache object will be instantiated and called as such:
@@ -97,15 +124,15 @@ if __name__ == "__main__":
     print(f"testing linked list implementation")
     head = tail = LinkedNode(1)
     head.print_to_tail()
-    tail = tail.add_new_tail(2)
+    tail = tail.add_new_tail_value(2)
     head.print_to_tail()
-    tail = tail.add_new_tail(3)
+    tail = tail.add_new_tail_value(3)
     head.print_to_tail()
 
-    tail = tail.add_new_tail(4)
-    tail = tail.add_new_tail(5)
-    sixth = tail = tail.add_new_tail(6)
-    tail = tail.add_new_tail(7)
+    tail = tail.add_new_tail_value(4)
+    tail = tail.add_new_tail_value(5)
+    sixth = tail = tail.add_new_tail_value(6)
+    tail = tail.add_new_tail_value(7)
     head.print_to_tail()
     popped, head = head.pop_head()
     print(f"popped value is {popped}")
@@ -117,4 +144,8 @@ if __name__ == "__main__":
     sixth.remove()
     print(f"removed six from linked list")
     print(f"new lnked list is:")
+    head.print_to_tail()
+
+    new_node = LinkedNode(8)
+    tail = tail.add_new_tail_node(new_node)
     head.print_to_tail()
