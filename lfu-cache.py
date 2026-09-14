@@ -6,6 +6,14 @@ class KeyNode:
         self.next: KeyNode | None = next
         self.prev: KeyNode | None = prev
 
+    def __repr__(self):
+        ret_str = ""
+        ret_str += f"key: {self.key}; value: {self.value}; times_used: {self.times_used}\n"
+        next_key = self.next.key if self.next else None
+        prev_key = self.prev.key if self.prev else None
+        ret_str += f"key prev: {prev_key}; key next: {next_key}"
+        return ret_str
+
 class LFUCache:
     def __init__(self, capacity: int):
         self.frequency_tiers: dict[int, tuple [KeyNode, KeyNode]] = {}
@@ -48,7 +56,12 @@ class LFUCache:
         self.smallest_frequency = 1
         return
 
-        
+    def __repr__(self):
+        ret_str = "=============="
+        for i in self.active_keys:
+            ret_str += "\n" + str(self.active_keys[i])
+
+        return ret_str
 
     def move_up(self, key):
         to_move = self.active_keys[key]
@@ -62,6 +75,8 @@ class LFUCache:
         #add to new one
         new_frequency = to_move.times_used + 1
 
+        if new_frequency not in self.frequency_tiers:
+            self.frequency_tiers[new_frequency] = [None, None]
         new_frequency_head = self.frequency_tiers[new_frequency][0]
         if not new_frequency_head:
             self.frequency_tiers[new_frequency][0] = to_move
@@ -77,3 +92,22 @@ class LFUCache:
 # obj = LFUCache(capacity)
 # param_1 = obj.get(key)
 # obj.put(key,value)
+
+if __name__ == "__main__":
+    sol = LFUCache(2)
+    print(sol.put(1, 1))
+    print(sol)
+    print(sol.put(2, 2))
+    print("-----")
+    print(sol)
+    print(sol.get(1))
+    print(sol)
+    print(sol.put(3, 3))
+    print(sol)
+    print("-----")
+    print(sol.get(2))
+    print(sol.get(3))
+    print(sol.put(4, 4))
+    print(sol.get(1))
+    print(sol.get(3))
+    print(sol.get(4))
