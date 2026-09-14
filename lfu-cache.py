@@ -44,8 +44,11 @@ class LFUCache:
             return
 
         #removing oldest with smallest count
+        print(f"got here for {key}")
         frequency_to_remove = self.frequency_tiers[self.smallest_frequency]
+        print(f"removing first item from frequency: {self.smallest_frequency}")
         item_to_remove = frequency_to_remove[0]
+        print(f"removing item: {item_to_remove}")
         self.active_keys.pop(item_to_remove.key)
         if frequency_to_remove[0].next:
             frequency_to_remove[0].next.prev = None
@@ -73,7 +76,8 @@ class LFUCache:
             to_move.next.prev = to_move.prev
 
         #add to new one
-        new_frequency = to_move.times_used + 1
+        to_move.times_used += 1
+        new_frequency = to_move.times_used
 
         if new_frequency not in self.frequency_tiers:
             self.frequency_tiers[new_frequency] = [None, None]
@@ -85,6 +89,7 @@ class LFUCache:
         if new_frequency_tail:
             new_frequency_tail.next = to_move
         to_move.prev = new_frequency_tail
+        to_move.next = None
         self.frequency_tiers[new_frequency][1] = to_move
 
 
@@ -101,13 +106,14 @@ if __name__ == "__main__":
     print("-----")
     print(sol)
     print(sol.get(1))
+    print(f"second frequency tier: {sol.frequency_tiers[2][0]} and {sol.frequency_tiers[2][1]}")
     print(sol)
     print(sol.put(3, 3))
     print(sol)
     print("-----")
-    print(sol.get(2))
+    '''print(sol.get(2))
     print(sol.get(3))
     print(sol.put(4, 4))
     print(sol.get(1))
     print(sol.get(3))
-    print(sol.get(4))
+    print(sol.get(4))'''
