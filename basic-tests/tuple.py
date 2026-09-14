@@ -4,3 +4,5 @@ tuple2 = ("b", tuple1)
 print(tuple1)
 print(tuple2)
 print(tuple2[1][0])
+if (None, None):
+    print("(None, None) é true")
