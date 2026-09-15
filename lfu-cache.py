@@ -44,15 +44,16 @@ class LFUCache:
             return
 
         #removing oldest with smallest count
-        print(f"got here for {key}")
         frequency_to_remove = self.frequency_tiers[self.smallest_frequency]
-        print(f"removing first item from frequency: {self.smallest_frequency}")
+        print(frequency_to_remove)
         item_to_remove = frequency_to_remove[0]
-        print(f"removing item: {item_to_remove}")
-        self.active_keys.pop(item_to_remove.key)
-        if frequency_to_remove[0].next:
-            frequency_to_remove[0].next.prev = None
-        frequency_to_remove[0] = frequency_to_remove[0].next
+        if item_to_remove:
+            if item_to_remove.next:
+                item_to_remove.next.prev = None
+                item_to_remove.next = None
+            if item_to_remove==frequency_to_remove[1]:
+                frequency_to_remove[1] = None
+            self.active_keys.pop(item_to_remove.key)
 
         new = self.active_keys[key] = KeyNode(key, value, 0, None, None)
         self.move_up(new.key)
@@ -72,8 +73,12 @@ class LFUCache:
         #first remove from old frequency tier
         if to_move.prev:
             to_move.prev.next = to_move.next
+        elif to_move.times_used != 0:
+            self.frequency_tiers[to_move.times_used][0] = to_move.next
         if to_move.next:
             to_move.next.prev = to_move.prev
+        elif to_move.times_used != 0:
+            self.frequency_tiers[to_move.times_used][1] = to_move.prev
 
         #add to new one
         to_move.times_used += 1
@@ -87,6 +92,7 @@ class LFUCache:
         
         new_frequency_tail = self.frequency_tiers[new_frequency][1]
         if new_frequency_tail:
+            print(f"adding new tail; {new_frequency_tail.key} -> {to_move.key}")
             new_frequency_tail.next = to_move
         to_move.prev = new_frequency_tail
         to_move.next = None
@@ -100,20 +106,15 @@ class LFUCache:
 
 if __name__ == "__main__":
     sol = LFUCache(2)
-    print(sol.put(1, 1))
-    print(sol)
-    print(sol.put(2, 2))
-    print("-----")
-    print(sol)
-    print(sol.get(1))
-    print(f"second frequency tier: {sol.frequency_tiers[2][0]} and {sol.frequency_tiers[2][1]}")
-    print(sol)
-    print(sol.put(3, 3))
-    print(sol)
-    print("-----")
-    '''print(sol.get(2))
-    print(sol.get(3))
-    print(sol.put(4, 4))
-    print(sol.get(1))
-    print(sol.get(3))
-    print(sol.get(4))'''
+    sol.put(1, 1)
+    sol.put(2, 2)
+    sol.get(1)
+    print("adding 3")
+    sol.put(3, 3)
+    print(sol.frequency_tiers[1])
+    sol.get(2)
+    sol.get(3)
+    sol.put(4, 4)
+    sol.get(1)
+    sol.get(3)
+    sol.get(4)
