@@ -45,7 +45,8 @@ class LFUCache:
 
         #removing oldest with smallest count
         frequency_to_remove = self.frequency_tiers[self.smallest_frequency]
-        print(frequency_to_remove)
+        print(f"adding key: {key}")
+        print(f"frequency to remove {self.smallest_frequency}: {frequency_to_remove}")
         item_to_remove = frequency_to_remove[0]
         if item_to_remove:
             if item_to_remove.next:
@@ -80,6 +81,8 @@ class LFUCache:
         elif to_move.times_used != 0:
             self.frequency_tiers[to_move.times_used][1] = to_move.prev
 
+        if to_move.times_used != 0 and self.frequency_tiers[to_move.times_used][1] == None:
+            self.smallest_frequency += 1
         #add to new one
         to_move.times_used += 1
         new_frequency = to_move.times_used
@@ -92,7 +95,6 @@ class LFUCache:
         
         new_frequency_tail = self.frequency_tiers[new_frequency][1]
         if new_frequency_tail:
-            print(f"adding new tail; {new_frequency_tail.key} -> {to_move.key}")
             new_frequency_tail.next = to_move
         to_move.prev = new_frequency_tail
         to_move.next = None
@@ -109,12 +111,11 @@ if __name__ == "__main__":
     sol.put(1, 1)
     sol.put(2, 2)
     sol.get(1)
-    print("adding 3")
     sol.put(3, 3)
-    print(sol.frequency_tiers[1])
     sol.get(2)
     sol.get(3)
     sol.put(4, 4)
+    print(sol.active_keys)
     sol.get(1)
     sol.get(3)
     sol.get(4)
