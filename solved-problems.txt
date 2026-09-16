@@ -38,3 +38,4 @@
 1383: Maximum Performance of a Team (ou variantes)
 1396: Design Underground System
 1929: Concatenation of Array
+2043: Simple Bank System
