@@ -20,6 +20,7 @@
 394: Decode String
 460: LFU Cache HALF
 743: Network Delay Time
+767: Reorganize String
 787: Cheapest Flights Within K Stops
 815: Bus Routes
 981: Time Based Key-Value Store
