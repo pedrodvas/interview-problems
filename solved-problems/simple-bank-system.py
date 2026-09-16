@@ -1,6 +1,6 @@
 class Bank:
 
-    def __init__(self, balance: List[int]):
+    def __init__(self, balance: list[int]):
         self.balance = balance
 
     def transfer(self, account1: int, account2: int, money: int) -> bool:
