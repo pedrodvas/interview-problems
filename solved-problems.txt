@@ -7,6 +7,7 @@
 10: Regular Expression Matching
 23: Merge k Sorted Lists HALF
 42: Trapping Rain Water
+48: Rotate Image
 56: Merge Intervals
 66: Plus One
 67: Add Binary
