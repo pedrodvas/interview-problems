@@ -11,6 +11,7 @@
 56: Merge Intervals
 66: Plus One
 67: Add Binary
+73: Set Matrix Zeroes
 76: Minimum Window Substring
 72: Edit Distance
 127: Word Ladder
