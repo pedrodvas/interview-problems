@@ -2,7 +2,6 @@ leetcode 150
     training both logic and speed
 
 4: Median of Two Sorted Arrays
-5: Longest Palindromic Substring
 6: Zigzag Conversion
 9: Palindrome Number
 11: Container With Most Water
